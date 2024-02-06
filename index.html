@@ -20,6 +20,7 @@
         height: 648px;
         width: 864px;
         padding: 10px;
+        font-size: 0pt;
     }
     #jatek img:hover{
         background-color: #99ccff;
@@ -38,9 +39,49 @@
 <script>
 
 
+    let kepek=["ures","repa","nyuszi","kutya",];
+    let t=[];
 
+    function start(){
+        let html="";        
+        for(let s=0; s<12; s++){
+            t[s]=[];
+            for(let o=0; o<9; o++){
+                t[s][o]="repa";
+                html+="<img id='"+s+"k"+o+"' src='repa.png'>";
+                document.getElementById("jatek").innerHTML=html;
+            }
+        }
+        
+        
+
+        console.log(t);
+        nyul();
+        console.log(t);
+        kutya();
+        console.log(t);
+    }
+    
+    function nyul(){
+        let oszlop=(Math.floor)(Math.random()*8);
+        let sor=(Math.floor)(Math.random()*12);
+        t[sor][oszlop]="nyuszi";        
+        document.getElementById(sor+"k"+oszlop).src="nyuszi.png";
+    }
+
+    function kutya(){
+        for(let i=0; i<21; i++){
+            let oszlop=(Math.floor)(Math.random()*8);
+            let sor=(Math.floor)(Math.random()*12); 
+            if(t[sor][oszlop]=="repa"){
+                t[sor][oszlop]="kutya";
+                document.getElementById(sor+"k"+oszlop).src="kutya.png";
+            }
+        }
+    }
+    
 </script>
-<body>  
+<body onload="start();">  
         <div id="jatek"></div>
         <div id="also">
             <div id="kepek"><img class="repa" src="repa.png"> <span class="repa" id="szam">0</span> darab<img id="ujra" src="ujra.png"></div>
